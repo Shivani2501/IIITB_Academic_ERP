@@ -1,0 +1,1 @@
+ALTER TABLE employee modify Password varchar(255);
