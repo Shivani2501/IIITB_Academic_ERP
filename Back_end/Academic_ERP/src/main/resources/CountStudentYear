@@ -1,0 +1,3 @@
+SELECT COUNT(*) AS total_students
+FROM student
+WHERE batch_year = 2025;

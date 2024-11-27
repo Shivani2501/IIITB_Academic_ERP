@@ -2,12 +2,16 @@ package org.shivanishukla.academic_erp.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.shivanishukla.academic_erp.dto.PlacementStatsResponse;
+import org.shivanishukla.academic_erp.entity.Student;
 import org.shivanishukla.academic_erp.helper.JWTHelper;
-import org.shivanishukla.academic_erp.services.PlacementService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.shivanishukla.academic_erp.services.PlacementService;
 
 import jakarta.servlet.http.HttpServletRequest;
+
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/placement")
@@ -42,6 +46,18 @@ public class PlacementController {
 
         } catch (Exception e) {
             return ResponseEntity.status(401).body("Unauthorized: " + e.getMessage());
+        }
+    }
+    @GetMapping("/filter")
+    public ResponseEntity<?> getFilteredStudents(
+            @RequestParam String organisationName,
+            @RequestParam String domainName,
+            @RequestParam int batchYear) {
+        try {
+            List<Student> students = placementService.getStudentsByOrganisationDomainYear(organisationName, domainName, batchYear);
+            return ResponseEntity.ok(students);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
         }
     }
 }

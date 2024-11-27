@@ -1,0 +1,16 @@
+SELECT
+    s.name AS student_name,
+    s.batch_year,
+    ps.acceptance,
+    ao.organization_name,
+    ao.position,
+    d.domain_name
+FROM
+    placement_student ps
+    INNER JOIN student s ON ps.student_id = s.id
+    LEFT JOIN alumni a ON a.student_id = s.id
+    LEFT JOIN alumni_organization ao ON ao.alumni_id = a.id
+    LEFT JOIN domain d ON s.domain_id = d.id
+WHERE
+    ps.acceptance = TRUE AND s.batch_year = 2025;
+``

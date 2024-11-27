@@ -12,10 +12,7 @@ import lombok.*;
 @Table(name="student")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name="student_id",unique = true,nullable = false)
+    @Column(name="student_id")
     private String student_id;
 
     @Column(name = "name",nullable = false)
@@ -26,5 +23,8 @@ public class Student {
     @Column(name = "batch_year",nullable = false)
     private Integer batch_year;
 
+    @ManyToOne
+    @JoinColumn(name="domain_id",nullable = false)
+    private Domain domain;
 
 }

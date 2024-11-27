@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @Table(name="placement_student")
+
 public class PlacementStudent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

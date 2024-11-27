@@ -15,16 +15,13 @@ import javax.print.DocFlavor;
 @Table(name="employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "empid", unique=true)
+    @Column(name = "empid")
     private String EmpId;
 
     @Column(name="email" ,nullable = false)
     private String email;
 
-    @Column(name = "Password",nullable = false)
+    @Column(name = "password",nullable = false)
     private String password;
 
     @ManyToOne

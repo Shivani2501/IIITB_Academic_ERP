@@ -1,0 +1,6 @@
+SELECT COUNT(DISTINCT s.id) AS placed_count
+FROM
+    placement_student ps
+    INNER JOIN student s ON ps.student_id = s.id
+WHERE
+    ps.acceptance = TRUE AND s.batch_year = 2025;

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PlacementStudentRepositoty extends JpaRepository<PlacementStudent, Long> {
+public interface PlacementStudenttRepository extends JpaRepository<PlacementStudent,Long>{
     @Query("SELECT COUNT(ps.id) " +
             "FROM PlacementStudent ps " +
             "JOIN ps.student s " +

@@ -1,0 +1,18 @@
+SELECT
+    s.name AS student_name,
+    s.batch_year,
+    d.domain_name,
+    ao.organization_name,
+    ao.position,
+    ao.joining_date,
+    ao.leaving_date
+FROM
+    student s
+    LEFT JOIN placement_student ps ON ps.student_id = s.id
+    LEFT JOIN alumni a ON a.student_id = s.id
+    LEFT JOIN alumni_organization ao ON ao.alumni_id = a.id
+    LEFT JOIN domain d ON s.domain_id = d.id
+WHERE
+    (ao.organization_name = 'Google' OR 'Google' IS NULL) AND
+    (s.batch_year = 2025 OR 2025 IS NULL) AND
+    (d.domain_name = 'Software Development' OR 'Software Development' IS NULL);
