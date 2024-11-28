@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Employeecontroller {
     @Autowired
     private EmployeeService employeeService;
-    @PostMapping("/login")
+    @PostMapping("/")
     public ResponseEntity<String> login(@RequestBody EmployeeLoginRequest LoginRequest) {
         String response=employeeService.login(LoginRequest);
             if(response.startsWith("Wrong")){
