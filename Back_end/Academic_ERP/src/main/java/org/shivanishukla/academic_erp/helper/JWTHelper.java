@@ -50,7 +50,7 @@ public class JWTHelper {
                 .setClaims(claims)
                 .setSubject(email)  // Setting email as the subject
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 5)) // Token valid for 10 hours
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 2)) // Token valid for 10 hours
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
@@ -58,6 +58,6 @@ public class JWTHelper {
     // Validate token
     public Boolean validateToken(String token, String email) {
         final String extractedEmail = extractEmail(token);
-        return (extractedEmail.equals(email) && isTokenExpired(token));
+        return (extractedEmail.equals(email) && !isTokenExpired(token));
     }
 }
